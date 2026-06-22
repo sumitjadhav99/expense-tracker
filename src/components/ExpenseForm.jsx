@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 function ExpenseForm({ addExpense, editingExpense, updateExpense }) {
 	const [title, setTitle] = useState('');
 	const [amount, setAmount] = useState('');
+	const [category, setCategory] = useState('');
 
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -11,6 +12,7 @@ function ExpenseForm({ addExpense, editingExpense, updateExpense }) {
 			id: editingExpense ? editingExpense.id : Date.now(),
 			title: title,
 			amount: Number(amount),
+			category,
 		};
 
 		if (editingExpense) {
@@ -20,12 +22,14 @@ function ExpenseForm({ addExpense, editingExpense, updateExpense }) {
 		}
 		setTitle('');
 		setAmount('');
+		setCategory('');
 	}
 
 	useEffect(() => {
 		if (editingExpense) {
 			setTitle(editingExpense.title);
 			setAmount(editingExpense.amount);
+			setCategory(editingExpense.category);
 		}
 	}, [editingExpense]);
 
@@ -43,6 +47,15 @@ function ExpenseForm({ addExpense, editingExpense, updateExpense }) {
 				value={amount}
 				onChange={(e) => setAmount(e.target.value)}
 			/>
+			<select
+				value={category}
+				onChange={(e) => setCategory(e.target.value)}>
+				<option value="">Select Category</option>
+				<option value="Food">Food</option>
+				<option value="Travel">Travel</option>
+				<option value="Shopping">Shopping</option>
+				<option value="Billing">Bills</option>
+			</select>
 			<button type="submit">
 				{editingExpense ? 'Update Expense' : 'Add Expense'}
 			</button>

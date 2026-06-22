@@ -16,6 +16,7 @@ function App() {
 
 	function addExpense(newExpense) {
 		setExpenses([...expenses, newExpense]);
+		setCategory("");
 	}
 
 	function deleteExpense(id) {
