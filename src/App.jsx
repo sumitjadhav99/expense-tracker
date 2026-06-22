@@ -12,6 +12,8 @@ function App() {
 
 	const [editingExpense, setEditingExpense] = useState(null);
 
+	const [searchTerm, setSearchTerm] = useState('');
+
 	function addExpense(newExpense) {
 		setExpenses([...expenses, newExpense]);
 	}
@@ -45,6 +47,10 @@ function App() {
 		setEditingExpense(null);
 	}
 
+	const filteredExpenses = expenses.filter((expense) => {
+		return expense.title.toLowerCase().includes(searchTerm.toLowerCase());
+	});
+
 	return (
 		<div>
 			<h1>Expense Tracker</h1>
@@ -54,8 +60,16 @@ function App() {
 				editingExpense={editingExpense}
 				updateExpense={updateExpense}
 			/>
+
+			<input
+				type="text"
+				placeholder="Search expenses..."
+				value={searchTerm}
+				onChange={(e) => setSearchTerm(e.target.value)}
+			/>
+
 			<ExpenseList
-				expenses={expenses}
+				expenses={filteredExpenses}
 				deleteExpense={deleteExpense}
 				editExpense={editExpense}
 			/>
