@@ -83,6 +83,12 @@ function App() {
 				<option value="Bills">Bills</option>
 			</select>
 
+			{(searchTerm !== '' || selectedCategory !== '') && (
+				<p>
+					Showing {filteredExpenses.length} of {expenses.length} expenses
+				</p>
+			)}
+
 			<ExpenseList
 				expenses={filteredExpenses}
 				deleteExpense={deleteExpense}
