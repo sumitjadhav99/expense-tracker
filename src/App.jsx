@@ -16,6 +16,8 @@ function App() {
 
 	const [selectedCategory, setSelectedCategory] = useState('');
 
+	const [sortOption, setSortOption] = useState('');
+
 	function addExpense(newExpense) {
 		setExpenses([...expenses, newExpense]);
 	}
@@ -56,6 +58,16 @@ function App() {
 		);
 	});
 
+	const sortedExpenses = [...filteredExpenses];
+
+	if (sortOption === 'lowToHigh') {
+		sortedExpenses.sort((a, b) => a.amount - b.amount);
+	}
+
+	if (sortOption === 'highToLow') {
+		sortedExpenses.sort((a, b) => b.amount - a.amount);
+	}
+
 	return (
 		<div>
 			<h1>Expense Tracker</h1>
@@ -83,6 +95,14 @@ function App() {
 				<option value="Bills">Bills</option>
 			</select>
 
+			<select
+				value={sortOption}
+				onChange={(e) => setSortOption(e.target.value)}>
+				<option value="">Default</option>
+				<option value="lowToHigh">Amount Low to High</option>
+				<option value="highToLow">Amount High to Low</option>
+			</select>
+
 			{(searchTerm !== '' || selectedCategory !== '') && (
 				<p>
 					Showing {filteredExpenses.length} of {expenses.length} expenses
@@ -90,7 +110,7 @@ function App() {
 			)}
 
 			<ExpenseList
-				expenses={filteredExpenses}
+				expenses={sortedExpenses}
 				deleteExpense={deleteExpense}
 				editExpense={editExpense}
 			/>
