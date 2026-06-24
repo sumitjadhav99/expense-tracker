@@ -14,9 +14,10 @@ function App() {
 
 	const [searchTerm, setSearchTerm] = useState('');
 
+	const [selectedCategory, setSelectedCategory] = useState('');
+
 	function addExpense(newExpense) {
 		setExpenses([...expenses, newExpense]);
-		setCategory("");
 	}
 
 	function deleteExpense(id) {
@@ -49,7 +50,10 @@ function App() {
 	}
 
 	const filteredExpenses = expenses.filter((expense) => {
-		return expense.title.toLowerCase().includes(searchTerm.toLowerCase());
+		return (
+			expense.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+			(selectedCategory === '' || expense.category === selectedCategory)
+		);
 	});
 
 	return (
@@ -68,6 +72,16 @@ function App() {
 				value={searchTerm}
 				onChange={(e) => setSearchTerm(e.target.value)}
 			/>
+
+			<select
+				value={selectedCategory}
+				onChange={(e) => setSelectedCategory(e.target.value)}>
+				<option value="">All Categories</option>
+				<option value="Food">Food</option>
+				<option value="Travel">Travel</option>
+				<option value="Shopping">Shopping</option>
+				<option value="Bills">Bills</option>
+			</select>
 
 			<ExpenseList
 				expenses={filteredExpenses}

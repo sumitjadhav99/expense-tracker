@@ -54,7 +54,7 @@ function ExpenseForm({ addExpense, editingExpense, updateExpense }) {
 				<option value="Food">Food</option>
 				<option value="Travel">Travel</option>
 				<option value="Shopping">Shopping</option>
-				<option value="Billing">Bills</option>
+				<option value="Bills">Bills</option>
 			</select>
 			<button type="submit">
 				{editingExpense ? 'Update Expense' : 'Add Expense'}
