@@ -1,7 +1,11 @@
 function ExpenseList({ expenses, deleteExpense, editExpense }) {
+	if (expenses.length === 0) {
+		return <p>No expenses found</p>;
+	}
 	return (
 		<div>
 			<h2>Expense List</h2>
+
 			{expenses.map((expense) => (
 				<div key={expense.id}>
 					<p key={expense.id}>
