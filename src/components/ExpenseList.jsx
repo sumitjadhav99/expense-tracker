@@ -1,3 +1,5 @@
+import ExpenseItem from './ExpenseItem';
+
 function ExpenseList({ expenses, deleteExpense, editExpense }) {
 	if (expenses.length === 0) {
 		return <p>No expenses found</p>;
@@ -7,13 +9,12 @@ function ExpenseList({ expenses, deleteExpense, editExpense }) {
 			<h2>Expense List</h2>
 
 			{expenses.map((expense) => (
-				<div key={expense.id}>
-					<p key={expense.id}>
-						{expense.title} - ₹{expense.amount} {expense.category}
-					</p>
-					<button onClick={() => deleteExpense(expense.id)}>Delete</button>
-					<button onClick={() => editExpense(expense)}>Edit</button>
-				</div>
+				<ExpenseItem
+					key={expense.id}
+					expense={expense}
+					deleteExpense={deleteExpense}
+					editExpense={editExpense}
+				/>
 			))}
 		</div>
 	);

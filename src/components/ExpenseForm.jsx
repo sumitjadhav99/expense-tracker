@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import "./ExpenseForm.css";
 
 function ExpenseForm({ addExpense, editingExpense, updateExpense }) {
 	const [title, setTitle] = useState('');
@@ -34,7 +35,9 @@ function ExpenseForm({ addExpense, editingExpense, updateExpense }) {
 	}, [editingExpense]);
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form onSubmit={handleSubmit}
+			className='expense-form'>
+			<div className='form-row'>
 			<input
 				type="text"
 				placeholder="Expense Name"
@@ -58,7 +61,8 @@ function ExpenseForm({ addExpense, editingExpense, updateExpense }) {
 			</select>
 			<button type="submit">
 				{editingExpense ? 'Update Expense' : 'Add Expense'}
-			</button>
+				</button>
+				</div>
 		</form>
 	);
 }

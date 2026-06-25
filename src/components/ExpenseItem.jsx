@@ -1,5 +1,13 @@
-function ExpenseItem() {
-    return <h2>ExpenseItem</h2>
+function ExpenseItem({ expense, deleteExpense, editExpense }) {
+	return (
+		<div>
+			<p key={expense.id}>
+				{expense.title} - ₹{expense.amount} {expense.category}
+			</p>
+			<button onClick={() => deleteExpense(expense.id)}>Delete</button>
+			<button onClick={() => editExpense(expense)}>Edit</button>
+		</div>
+	);
 }
 
 export default ExpenseItem;

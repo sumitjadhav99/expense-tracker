@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import ExpenseForm from './components/ExpenseForm';
 import ExpenseList from './components/ExpenseList';
 import Summary from './components/Summary';
+import "./App.css";
+import "./index.css"
 
 function App() {
 	const [expenses, setExpenses] = useState(() => {
@@ -74,7 +76,7 @@ function App() {
 	}
 
 	return (
-		<div>
+		<div className='container'>
 			<h1>Expense Tracker</h1>
 			<Summary expenses={expenses} />
 			<ExpenseForm
