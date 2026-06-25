@@ -68,6 +68,11 @@ function App() {
 		sortedExpenses.sort((a, b) => b.amount - a.amount);
 	}
 
+	function clearAllExpenses() {
+		if (window.confirm('Are you sure you want to delete all expenses ?'))
+			setExpenses([]);
+	}
+
 	return (
 		<div>
 			<h1>Expense Tracker</h1>
@@ -107,6 +112,10 @@ function App() {
 				<p>
 					Showing {filteredExpenses.length} of {expenses.length} expenses
 				</p>
+			)}
+
+			{expenses.length > 0 && (
+				<button onClick={clearAllExpenses}>Clear All Expenses</button>
 			)}
 
 			<ExpenseList
