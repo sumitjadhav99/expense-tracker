@@ -31,3 +31,15 @@
 .form-row button:hover {
     background-color: #1d4ed8;
 }
+
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-row input,
+    .form-row select,
+    .form-row button {
+         width: 100%;
+  }
+}

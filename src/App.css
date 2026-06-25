@@ -6,3 +6,66 @@
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+.filters {
+    display: flex;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.filters input, 
+.filters select {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.filters button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ef4444;
+    color: white;
+    cursor: pointer;
+}
+
+.filters button:hover {
+  background-color: #dc2626;
+}
+
+.expense-list-title {
+  margin: 35px 0 20px;
+}
+
+h1{
+    margin-bottom:10px;
+}
+
+.total{
+    margin-bottom:30px;
+}
+
+.total span{
+    color:#2563eb;
+}
+
+.empty-state{
+    text-align:center;
+    padding:40px;
+    background:white;
+    border-radius:12px;
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+  }
+
+  .filters input,
+  .filters select,
+  .filters button {
+    width: 100%;
+  }
+}

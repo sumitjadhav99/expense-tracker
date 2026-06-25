@@ -1,12 +1,13 @@
 import ExpenseItem from './ExpenseItem';
+import "../App.css";
 
 function ExpenseList({ expenses, deleteExpense, editExpense }) {
 	if (expenses.length === 0) {
-		return <p>No expenses found</p>;
+		return <p className="empty-state">No expenses found</p>;
 	}
 	return (
 		<div>
-			<h2>Expense List</h2>
+			<h2 className="expense-list-title">Expense List</h2>
 
 			{expenses.map((expense) => (
 				<ExpenseItem

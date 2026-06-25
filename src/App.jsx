@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import ExpenseForm from './components/ExpenseForm';
 import ExpenseList from './components/ExpenseList';
 import Summary from './components/Summary';
-import "./App.css";
-import "./index.css"
+import './App.css';
+import './index.css';
 
 function App() {
 	const [expenses, setExpenses] = useState(() => {
@@ -76,7 +76,7 @@ function App() {
 	}
 
 	return (
-		<div className='container'>
+		<div className="container">
 			<h1>Expense Tracker</h1>
 			<Summary expenses={expenses} />
 			<ExpenseForm
@@ -85,40 +85,42 @@ function App() {
 				updateExpense={updateExpense}
 			/>
 
-			<input
-				type="text"
-				placeholder="Search expenses..."
-				value={searchTerm}
-				onChange={(e) => setSearchTerm(e.target.value)}
-			/>
+			<div className="filters">
+				<input
+					type="text"
+					placeholder="Search expenses..."
+					value={searchTerm}
+					onChange={(e) => setSearchTerm(e.target.value)}
+				/>
 
-			<select
-				value={selectedCategory}
-				onChange={(e) => setSelectedCategory(e.target.value)}>
-				<option value="">All Categories</option>
-				<option value="Food">Food</option>
-				<option value="Travel">Travel</option>
-				<option value="Shopping">Shopping</option>
-				<option value="Bills">Bills</option>
-			</select>
+				<select
+					value={selectedCategory}
+					onChange={(e) => setSelectedCategory(e.target.value)}>
+					<option value="">All Categories</option>
+					<option value="Food">Food</option>
+					<option value="Travel">Travel</option>
+					<option value="Shopping">Shopping</option>
+					<option value="Bills">Bills</option>
+				</select>
 
-			<select
-				value={sortOption}
-				onChange={(e) => setSortOption(e.target.value)}>
-				<option value="">Default</option>
-				<option value="lowToHigh">Amount Low to High</option>
-				<option value="highToLow">Amount High to Low</option>
-			</select>
+				<select
+					value={sortOption}
+					onChange={(e) => setSortOption(e.target.value)}>
+					<option value="">Default</option>
+					<option value="lowToHigh">Amount Low to High</option>
+					<option value="highToLow">Amount High to Low</option>
+				</select>
 
-			{(searchTerm !== '' || selectedCategory !== '') && (
-				<p>
-					Showing {filteredExpenses.length} of {expenses.length} expenses
-				</p>
-			)}
+				{(searchTerm !== '' || selectedCategory !== '') && (
+					<p>
+						Showing {filteredExpenses.length} of {expenses.length} expenses
+					</p>
+				)}
 
-			{expenses.length > 0 && (
-				<button onClick={clearAllExpenses}>Clear All Expenses</button>
-			)}
+				{expenses.length > 0 && (
+					<button onClick={clearAllExpenses}>Clear All Expenses</button>
+				)}
+			</div>
 
 			<ExpenseList
 				expenses={sortedExpenses}
